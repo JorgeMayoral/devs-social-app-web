@@ -1,4 +1,4 @@
-import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
+import { Box, ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -6,7 +6,9 @@ function MyApp({ Component, pageProps }) {
       <ColorModeProvider
         options={{ useSystemColorMode: false, initialColorMode: 'light' }}
       >
-        <Component {...pageProps} />
+        <Box bgColor="#eeeeee">
+          <Component {...pageProps} />
+        </Box>
       </ColorModeProvider>
     </ChakraProvider>
   );
