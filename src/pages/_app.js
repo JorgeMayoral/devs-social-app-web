@@ -1,9 +1,13 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <ColorModeProvider
+        options={{ useSystemColorMode: false, initialColorMode: 'light' }}
+      >
+        <Component {...pageProps} />
+      </ColorModeProvider>
     </ChakraProvider>
   );
 }
