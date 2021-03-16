@@ -1,4 +1,4 @@
-import { Box, Center, Link, Text, Flex } from '@chakra-ui/layout';
+import { Center, Link, Text } from '@chakra-ui/layout';
 
 const Footer = () => {
   return (

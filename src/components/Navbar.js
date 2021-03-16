@@ -1,6 +1,5 @@
 import { Button } from '@chakra-ui/button';
-import { Flex } from '@chakra-ui/layout';
-import { Box, Center, Heading, Link, Text } from '@chakra-ui/layout';
+import { Box, Center, Flex, Heading, Link } from '@chakra-ui/layout';
 import NextLink from 'next/link';
 
 const Navbar = () => {
