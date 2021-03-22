@@ -5,8 +5,10 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import InputField from '../components/InputField';
 import Layout from '../components/Layout';
+import { useUser } from '../hooks/useUser';
 
 const Login = () => {
+  const { login, hasError } = useUser();
   const router = useRouter();
 
   function validate(values) {
@@ -23,28 +25,10 @@ const Login = () => {
     return errors;
   }
 
-  async function loginUser(values) {
-    const userData = {
-      username: values.username,
-      password: values.password,
-    };
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/user/login`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData),
-        },
-      );
-      const data = await response.json();
-      console.log(data);
+  function loginUser(values) {
+    login(values);
+    if (!hasError) {
       router.push('/');
-      return data;
-    } catch (error) {
-      console.error(error);
     }
   }
 
@@ -55,7 +39,7 @@ const Login = () => {
         <Formik
           onSubmit={async (values, actions) => {
             actions.setSubmitting(true);
-            await loginUser(values);
+            loginUser(values);
             actions.setSubmitting(false);
           }}
           validate={validate}
